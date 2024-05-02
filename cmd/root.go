@@ -23,7 +23,6 @@ func NewRootCmd() *cobra.Command {
 		Use:   "k8s-apiserver-loadblancer",
 		Short: "it is a tool to create a loadbalancer for k8s apiserver",
 		RunE: func(cmd *cobra.Command, args []string) error {
-
 			ctx, cancel := context.WithCancel(context.Background())
 			sigCh := make(chan os.Signal, 1)
 			stopCh := make(chan struct{})

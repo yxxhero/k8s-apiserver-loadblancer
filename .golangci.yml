@@ -62,7 +62,7 @@ linters-settings:
     sections:
       - standard
       - default
-      - prefix(gitlab.glm.ai/devops/node-agent)
+      - prefix(github.com/yxxhero/k8s-apiserver-loadblancer/)
 
   errcheck:
     # report about not checking of errors in type assetions: `a := b.(MyStruct)`;
