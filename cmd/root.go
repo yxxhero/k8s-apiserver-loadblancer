@@ -78,7 +78,7 @@ func NewRootCmd() *cobra.Command {
 			return nil
 		},
 	}
-	rootCmd.Flags().StringVar(&c.Kubeconfig, "kubeconfig", "/Users/yxx/.kube/config", "absolute path to the kubeconfig file")
+	rootCmd.Flags().StringVar(&c.Kubeconfig, "kubeconfig", "", "absolute path to the kubeconfig file")
 	rootCmd.Flags().StringVar(&c.ServiceType, "service-type", "LoadBalancer", "service type")
 	rootCmd.Flags().StringVar(&c.ID, "id", "", "unique id for the leader election")
 	rootCmd.Flags().StringVar(&c.ServiceName, "service-name", "k8s-apiserver", "service name")
