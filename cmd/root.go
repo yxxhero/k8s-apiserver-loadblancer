@@ -9,11 +9,12 @@ import (
 
 	"github.com/rs/zerolog/log"
 	"github.com/spf13/cobra"
+	"k8s.io/client-go/tools/leaderelection"
+
 	"github.com/yxxhero/k8s-apiserver-loadblancer/pkg/config"
 	"github.com/yxxhero/k8s-apiserver-loadblancer/pkg/k8s"
 	"github.com/yxxhero/k8s-apiserver-loadblancer/pkg/lock"
 	"github.com/yxxhero/k8s-apiserver-loadblancer/pkg/mirror"
-	"k8s.io/client-go/tools/leaderelection"
 )
 
 func NewRootCmd() *cobra.Command {

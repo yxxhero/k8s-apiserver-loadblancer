@@ -1,11 +1,11 @@
 package lock
 
 import (
-	"github.com/yxxhero/k8s-apiserver-loadblancer/pkg/config"
-
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/leaderelection/resourcelock"
+
+	"github.com/yxxhero/k8s-apiserver-loadblancer/pkg/config"
 )
 
 const (

@@ -4,9 +4,9 @@ Copyright © 2024 NAME HERE <EMAIL ADDRESS>
 package main
 
 import (
-	"github.com/yxxhero/k8s-apiserver-loadblancer/cmd"
-
 	"github.com/rs/zerolog/log"
+
+	"github.com/yxxhero/k8s-apiserver-loadblancer/cmd"
 )
 
 func main() {

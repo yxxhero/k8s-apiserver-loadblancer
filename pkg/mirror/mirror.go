@@ -4,13 +4,14 @@ import (
 	"context"
 
 	"github.com/rs/zerolog/log"
+	v1 "k8s.io/api/core/v1"
+	discoveryV1 "k8s.io/api/discovery/v1"
+	"k8s.io/client-go/kubernetes"
+
 	"github.com/yxxhero/k8s-apiserver-loadblancer/pkg/config"
 	"github.com/yxxhero/k8s-apiserver-loadblancer/pkg/constant"
 	"github.com/yxxhero/k8s-apiserver-loadblancer/pkg/informer"
 	"github.com/yxxhero/k8s-apiserver-loadblancer/pkg/k8s"
-	v1 "k8s.io/api/core/v1"
-	discoveryV1 "k8s.io/api/discovery/v1"
-	"k8s.io/client-go/kubernetes"
 )
 
 // Run is the entry point for the mirror command
@@ -85,7 +86,6 @@ func reconcile(es *discoveryV1.EndpointSlice, c *config.Config, k8sclient *kuber
 			log.Error().Err(err).Msgf("failed to update service %s in namespace %s", c.ServiceName, c.ServiceNamespace)
 			return err
 		}
-
 	}
 
 	ok, err = k8s.IsExistEndpointSlice(k8sclient, c.ServiceNamespace, c.ServiceName)
