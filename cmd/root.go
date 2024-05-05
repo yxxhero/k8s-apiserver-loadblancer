@@ -81,7 +81,7 @@ func NewRootCmd() *cobra.Command {
 	rootCmd.Flags().StringVar(&c.Kubeconfig, "kubeconfig", "", "absolute path to the kubeconfig file")
 	rootCmd.Flags().StringVar(&c.ServiceType, "service-type", "LoadBalancer", "service type")
 	rootCmd.Flags().StringVar(&c.ID, "id", "", "unique id for the leader election")
-	rootCmd.Flags().StringVar(&c.ServiceName, "service-name", "k8s-apiserver", "service name")
+	rootCmd.Flags().StringVar(&c.ServiceName, "service-name", "k8s-apiserver-lb", "service name")
 	rootCmd.Flags().StringVar(&c.ServiceNamespace, "service-namespace", "default", "service namespace")
 	return rootCmd
 }
