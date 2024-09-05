@@ -52,6 +52,23 @@ func Run(ctx context.Context, c *config.Config, k8sClient *kubernetes.Clientset)
 	return nil
 }
 
+func convertSVCPorts(svcPorts []v1.ServicePort) []v1.ServicePort {
+	result := []v1.ServicePort{}
+	for _, port := range svcPorts {
+		if port.Name == "https" && port.Port == 443 {
+			result = append(result, v1.ServicePort{
+				Name:       port.Name,
+				Port:       6443,
+				TargetPort: port.TargetPort,
+				Protocol:   port.Protocol,
+			})
+			continue
+		}
+		result = append(result, port)
+	}
+	return result
+}
+
 // reconcile is the function that will be called to reconcile the state of the system
 func reconcile(es *discoveryV1.EndpointSlice, c *config.Config, k8sclient *kubernetes.Clientset) error {
 	ok, err := k8s.IsExistService(k8sclient, c.ServiceNamespace, c.ServiceName)
@@ -72,6 +89,7 @@ func reconcile(es *discoveryV1.EndpointSlice, c *config.Config, k8sclient *kuber
 	customSVC.Spec.ClusterIP = ""
 	customSVC.UID = ""
 	customSVC.ResourceVersion = ""
+	customSVC.Spec.Ports = convertSVCPorts(s.Spec.Ports)
 	customSVC.Spec.Type = v1.ServiceType(c.ServiceType)
 
 	if !ok {
